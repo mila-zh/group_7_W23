@@ -37,10 +37,7 @@ while True:
     # transmission_count += 1
     data = data_generator.generate_data()
 
-    # # Simulate occasional transmission failures
-    # if transmission_count % 100 != 0:
-    #     client.publish(topic, json.dumps(data))
-    #     print(f"Sending message: {json.dumps(data)}")
+
 
     # Your transmission will fail with a frequency of about 1 in very 100 transmissions. This must not be deterministic!
     # random.random() < 0.01 have probability of almost 1/100
