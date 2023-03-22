@@ -7,17 +7,21 @@ from tkinter import *
 def on_message(client, userdata, message):
     data = json.loads(message.payload.decode())
 
-    # Transmit “wild data” something that is completely off the chart. Again your subscriber should be able to handle this
+    if data.get("location") != location:
+        return  # Ignore the data if the location doesn't match
+
+    # Transmit “wild data” something that is completely off the chart.
+    # Again your subscriber should be able to handle this
     # Handle out-of-range data
     if data["value"] < min_temperature or data["value"] > max_temperature:
         print("Out-of-range data received:", data)
+        data_label.config(text=f"Out-of-range data: {data['device_id']} - {data['value']} - {data['timestamp']}",
+                          fg="red")
     else:
         print("Data received:", data)
+        data_label.config(text=f"{data['device_id']} - {data['value']} - {data['timestamp']}", fg="black")
 
-        # Update the tkinter label with received data
-        data_label.config(text=f"{data['device_id']} - {data['value']} - {data['timestamp']}")
-
-        root.after_cancel(timeout_id)  # Cancel the timeout
+    root.after_cancel(timeout_id)  # Cancel the timeout
 
 
 def on_timeout():
@@ -28,7 +32,7 @@ if len(sys.argv) < 2:
     print("Please provide a location as an argument.")
     sys.exit(1)
 
-device_id = sys.argv[0]
+
 location = sys.argv[1]
 min_temperature = 20
 max_temperature = 30

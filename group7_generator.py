@@ -18,7 +18,7 @@ class DataGenerator:
         if random.random() < self.wild_value_chance:
             value *= self.wild_value_factor
 
-        timestamp = time.strftime('%Y-%m-%d %H:%M:%S')
+        timestamp = time.strftime('%Y-%m-%d %H:%M:%S', time.gmtime())
         data = {"device_id": self.device_id, "value": value, "timestamp": timestamp}
 
         if self.location:
