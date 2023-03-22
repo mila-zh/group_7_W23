@@ -4,7 +4,8 @@ import time
 
 class DataGenerator:
 
-    def __init__(self, device_id, min_value, max_value, wild_value_factor=10, wild_value_chance=0.01, location=None):
+    # set wild data factor to 10, and it happens chance to 0.1
+    def __init__(self, device_id, min_value, max_value, wild_value_factor=10, wild_value_chance=0.1, location=None):
         self.device_id = device_id
         self.min_value = min_value
         self.max_value = max_value
@@ -15,6 +16,7 @@ class DataGenerator:
     def generate_data(self):
         value = round(random.uniform(self.min_value, self.max_value), 1)
 
+        # Create wild data according to the change of wild data happens, and it's factor
         if random.random() < self.wild_value_chance:
             value *= self.wild_value_factor
 
