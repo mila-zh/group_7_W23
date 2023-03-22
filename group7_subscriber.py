@@ -15,11 +15,13 @@ def on_message(client, userdata, message):
     # Handle out-of-range data
     if data["value"] < min_temperature or data["value"] > max_temperature:
         print("Out-of-range data received:", data)
-        data_label.config(text=f"Out-of-range data: {data['device_id']} - {data['value']} - {data['timestamp']}",
+        data_label.config(text=f"Out-of-range data: {data['device_id']} - {data['value']} - {data['timestamp']} - "
+                               f"{data['location']}",
                           fg="red")
     else:
         print("Data received:", data)
-        data_label.config(text=f"{data['device_id']} - {data['value']} - {data['timestamp']}", fg="black")
+        data_label.config(text=f"{data['device_id']} - {data['value']} - {data['timestamp']} - {data['location']}",
+                          fg="black")
 
     root.after_cancel(timeout_id)  # Cancel the timeout
 

@@ -28,8 +28,8 @@ client.connect(broker, port)
 
 # skipping blocks of transmissions
 
-skip_transmission_probability = 0.05  # Adj# ust this value as needed
-skip_transmission_count = 5  # Adjust this value as needed
+skip_transmission_probability = 0.05  # The possible that "Skip transmission" happens
+skip_transmission_count = 5  # Time in seconds when "Skip transmission" happens
 
 while True:
 
