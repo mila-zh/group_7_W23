@@ -27,7 +27,7 @@ class DataGenerator:
 
         # Create "wild data" if random.random() is smaller than wild_value_chance(default: 0.1)
         if random.random() < self.wild_value_chance:
-            value *= self.wild_value_factor
+            value = 10
 
         # Generate the time stamp in the form of '%Y-%m-%d %H:%M:%S'
         timestamp = time.strftime('%Y-%m-%d %H:%M:%S', time.gmtime())
